@@ -1,0 +1,50 @@
+/* Smooth animations */
+
+.nav-link.active {
+    color: #3B82F6;
+}
+
+/* Skill bar animation */
+.skill-bar {
+    transition: width 2s ease-in-out;
+}
+
+/* Project hover effect */
+.project-card img {
+    transition: transform 0.5s ease;
+}
+
+/* Certificate hover */
+.certificate-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+/* Typewriter text */
+#typewriter {
+    border-right: 2px solid #3B82F6;
+    padding-right: 5px;
+}
+
+/* Scrollbar styling */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3B82F6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+}

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shodipo Michael | Frontend Developer</title>
+    <meta name="description" content="Shodipo Michael - Professional Frontend Developer specializing in HTML, CSS, JavaScript, Go, and modern web technologies">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#8B5CF6',
+                        accent: '#06B6D4',
+                        dark: '#0F172A',
+                        darker: '#020617',
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darker text-gray-100 font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-300 bg-darker/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold font-mono bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                        &lt;SM /&gt;
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-primary transition-colors">Home</a>
+                        <a href="#about" class="nav-link px-3 py-2 text-sm font-medium text-gray-300 hover:text-primary transition-colors">About</a>
+                        <a href="#skills" class="nav-link px-3 py-2 text-sm font-medium text-gray-300 hover:text-primary transition-colors">Skills</a>
+                        <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium text-gray-300 hover:text-primary transition-colors">Projects</a>
+                        <a href="#certificates" class="nav-link px-3 py-2 text-sm font-medium text-gray-300 hover:text-primary transition-colors">Certificates</a>
+                        <a href="#contact" class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/80 rounded-full transition-all transform hover:scale-105">Contact Me</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darker border-b border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-white hover:text-primary hover:bg-white/5 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-md">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-md">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-md">Projects</a>
+                <a href="#certificates" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-md">Certificates</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-primary hover:bg-white/5 rounded-md">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233B82F6\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left space-y-6">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-mono mb-4">
+                        <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                        Available for hire
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Shodipo</span><br>
+                        <span class="text-gray-300">Micheal</span>
+                    </h1>
+                    
+                    <div class="h-8 md:h-12">
+                        <span id="typewriter" class="text-xl md:text-3xl font-mono text-gray-400"></span>
+                        <span class="animate-pulse text-primary">|</span>
+                    </div>
+                    
+                    <p class="text-lg text-gray-400 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                        Frontend Developer crafting beautiful, responsive, and performant web experiences. Specializing in modern JavaScript ecosystems and clean code architecture.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                        <a href="#projects" class="px-8 py-3 bg-primary hover:bg-primary/80 text-white font-semibold rounded-full transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                            View My Work
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" class="px-8 py-3 border border-white/20 hover:border-primary text-white font-semibold rounded-full transition-all hover:bg-white/5 flex items-center justify-center gap-2">
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <div class="flex items-center justify-center md:justify-start gap-6 pt-6 text-gray-400">
+                        <a href="#" class="hover:text-primary transition-colors transform hover:scale-110">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition-colors transform hover:scale-110">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition-colors transform hover:scale-110">
+                            <i data-lucide="twitter" class="w-6 h-6"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition-colors transform hover:scale-110">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative hidden md:block">
+                    <div class="relative w-full h-[500px] animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl blur-3xl"></div>
+                        <div class="relative h-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm p-6">
+                            <div class="w-full h-full rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                                <div class="text-center z-10">
+                                    <i data-lucide="code-2" class="w-24 h-24 text-primary mx-auto mb-4"></i>
+                                    <p class="font-mono text-primary text-lg">&lt;FrontendDeveloper /&gt;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-primary">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10">
+                        <img src="http://static.photos/technology/640x360/42" alt="Shodipo Michael" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-primary/10 backdrop-blur-md border border-primary/30 rounded-2xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">5+</p>
+                                <p class="text-sm text-gray-400">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-gray-200">Passionate about creating digital experiences</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        I'm Shodipo Michael, a dedicated Frontend Developer with a strong foundation in modern web technologies. My journey in web development started with a curiosity about how things work on the internet, which evolved into a deep passion for creating intuitive and performant user interfaces.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        I specialize in building responsive web applications using HTML, CSS, and JavaScript, with experience in Go for backend integration. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends and best practices.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary"></i>
+                            <span class="text-gray-300">Problem Solver</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary"></i>
+                            <span class="text-gray-300">Detail Oriented</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary"></i>
+                            <span class="text-gray-300">Continuous Learner</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary"></i>
+                            <span class="text-gray-300">Team Player</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="#" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors font-semibold">
+                            Download Resume
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-dark to-darker"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-primary">Skills</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Technologies and tools I use to bring ideas to life</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- HTML -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
+                            <i data-lucide="file-code" class="w-6 h-6 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">HTML5</h3>
+                            <p class="text-sm text-gray-400">Semantic Markup</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-orange-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="95%"></div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                            <i data-lucide="palette" class="w-6 h-6 text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">CSS3</h3>
+                            <p class="text-sm text-gray-400">Styling & Animations</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="90%"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors">
+                            <i data-lucide="braces" class="w-6 h-6 text-yellow-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">JavaScript</h3>
+                            <p class="text-sm text-gray-400">ES6+ & DOM</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="88%"></div>
+                    </div>
+                </div>
+
+                <!-- Go -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
+                            <i data-lucide="terminal" class="w-6 h-6 text-cyan-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Go</h3>
+                            <p class="text-sm text-gray-400">Backend Basics</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-cyan-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="75%"></div>
+                    </div>
+                </div>
+
+                <!-- Git -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center group-hover:bg-red-500/30 transition-colors">
+                            <i data-lucide="git-branch" class="w-6 h-6 text-red-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Git</h3>
+                            <p class="text-sm text-gray-400">Version Control</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-red-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="85%"></div>
+                    </div>
+                </div>
+
+                <!-- Responsive Design -->
+                <div class="skill-card group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-purple-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Responsive Design</h3>
+                            <p class="text-sm text-gray-400">Mobile First</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-purple-500 h-2 rounded-full skill-bar" style="width: 0%" data-width="92%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="mt-16">
+                <h3 class="text-xl font-bold text-center mb-8 text-gray-300">Other Tools & Technologies</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">VS Code</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">Chrome DevTools</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">npm</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">Webpack</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">Figma</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">Postman</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">REST APIs</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary transition-all cursor-default">JSON</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-primary">Projects</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Some of my recent work and personal projects</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/101" alt="E-Commerce Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30">HTML</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full border border-accent/30">CSS</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">E-Commerce Dashboard</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A responsive admin dashboard for managing products, orders, and analytics with dark mode support.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/workspace/640x360/55" alt="Task Management App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/30">JS</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-500 text-xs rounded-full border border-blue-500/30">LocalStorage</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Task Master Pro</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A productivity application with drag-and-drop functionality, local storage persistence, and category filtering.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2024</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/abstract/640x360/77" alt="Weather Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/30">JS</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-500 text-xs rounded-full border border-cyan-500/30">API</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Weather Dashboard</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Real-time weather application using OpenWeather API with 5-day forecast and location-based search.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/minimal/640x360/88" alt="Portfolio Website" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full border border-orange-500/30">HTML</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-500 text-xs rounded-full border border-blue-500/30">CSS</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Personal Portfolio</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A responsive portfolio website showcasing projects and skills with smooth animations and modern design.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/123" alt="API Integration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-500 text-xs rounded-full border border-cyan-500/30">Go</span>
+                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/30">JS</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">REST API Client</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A tool for testing and interacting with RESTful APIs, featuring request history and response formatting.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="http://static.photos/nature/640x360/33" alt="Landing Page" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+                        <div class="absolute top-4 right-4 flex gap-2">
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full border border-orange-500/30">HTML</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-500 text-xs rounded-full border border-blue-500/30">CSS</span>
+                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded-full border border-yellow-500/30">JS</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Nature Conservation</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A responsive landing page for an environmental NGO with donation integration and newsletter signup.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <span class="text-sm text-gray-500">2023</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-primary text-white rounded-full transition-all hover:bg-white/5">
+                    View All Projects
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-darker to-dark"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Certificates & <span class="text-primary">Achievements</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Professional certifications and accomplishments</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Certificate 1 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="award" class="w-6 h-6 text-blue-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2024</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Frontend Development Professional</h3>
+                    <p class="text-gray-400 text-sm mb-4">Meta (Facebook)</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="code" class="w-6 h-6 text-yellow-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2023</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">JavaScript Algorithms & Data Structures</h3>
+                    <p class="text-gray-400 text-sm mb-4">freeCodeCamp</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="layout" class="w-6 h-6 text-orange-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2023</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Responsive Web Design</h3>
+                    <p class="text-gray-400 text-sm mb-4">freeCodeCamp</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="git-branch" class="w-6 h-6 text-purple-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2023</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Git & GitHub Essentials</h3>
+                    <p class="text-gray-400 text-sm mb-4">GitHub</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="terminal" class="w-6 h-6 text-cyan-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2024</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Go Programming Basics</h3>
+                    <p class="text-gray-400 text-sm mb-4">Udemy</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="certificate-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="zap" class="w-6 h-6 text-green-500"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">2023</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">Web Performance Optimization</h3>
+                    <p class="text-gray-400 text-sm mb-4">Google</p>
+                    <div class="flex items-center gap-2 text-sm text-primary">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="hover:underline cursor-pointer">View Credential</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Work <span class="text-primary">Together</span></h2>
+                    <p class="text-gray-400 mb-8">Have a project in mind? I'm always open to discussing new opportunities and interesting projects.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Email</p>
+                                <p class="text-white font-medium">shodipo.michael@email.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Location</p>
+                                <p class="text-white font-medium">Available Worldwide (Remote)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="clock" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Response Time</p>
+                                <p class="text-white font-medium">Usually within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mt-8">
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-white placeholder-gray-500" placeholder="Your Name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-white placeholder-gray-500" placeholder="your@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-white placeholder-gray-500 resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-primary hover:bg-primary/80 text-white font-semibold rounded-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                            Send Message
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-2xl font-bold font-mono bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    &lt;SM /&gt;
+                </div>
+                <p class="text-gray-400 text-sm">
+                    © 2024 Shodipo Michael. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
