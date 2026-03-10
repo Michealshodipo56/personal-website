@@ -1,12 +1,13 @@
 # TODO List
 
 ## Website Improvements
-- add favicon
-- change logo
-- add social links
+
+- add favicon ----- done
+- change logo ----- done
+- add social links ----- done
 - add profile image
 - add other images
-- change years experience 
+- change years experience
 - edit skils range
 - change other tools and technologies used
 - change the featured project contents
@@ -15,4 +16,5 @@
 - add privacy and terms contents as modal
 
 ## Features to Build
+
 - create view all project section
