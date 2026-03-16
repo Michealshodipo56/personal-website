@@ -1,7 +1,7 @@
 /* Smooth animations */
 
 .nav-link.active {
-    color: #3B82F6;
+    color: #0000FF;
 }
 
 /* Skill bar animation */
@@ -26,7 +26,7 @@
 
 /* Typewriter text */
 #typewriter {
-    border-right: 2px solid #3B82F6;
+    border-right: 2px solid #0000FF;
     padding-right: 5px;
 }
 
@@ -41,10 +41,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3B82F6;
+    background: #0000FF;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2563EB;
+    background: #0000D4;
 }

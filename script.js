@@ -16,7 +16,7 @@ window.addEventListener("scroll", () => {
     } else {
         navbar.classList.remove("shadow-lg");
     }
-});
+});UI/UX
 
 
 // Skill bar animation when visible
@@ -42,7 +42,8 @@ const text = [
     "Frontend Developer",
     "JavaScript Developer",
     "HTML & CSS Specialist",
-    "Go Enthusiast"
+    "Go Enthusiast",
+    "UI/UX Designer"
 ];
 
 let count = 0;
