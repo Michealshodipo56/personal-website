@@ -16,7 +16,7 @@ window.addEventListener("scroll", () => {
     } else {
         navbar.classList.remove("shadow-lg");
     }
-});UI/UX
+});
 
 
 // Skill bar animation when visible
@@ -47,29 +47,37 @@ const text = [
 ];
 
 let count = 0;
-let index = 0;
-let currentText = "";
 let letter = "";
+let isDeleting = false;
 
 function type() {
+    const current = count % text.length;
+    const fullText = text[current];
 
-    if (count === text.length) {
-        count = 0;
+    if (isDeleting) {
+        letter = fullText.substring(0, letter.length - 1);
+    } else {
+        letter = fullText.substring(0, letter.length + 1);
     }
-
-    currentText = text[count];
-    letter = currentText.slice(0, ++index);
 
     document.getElementById("typewriter").textContent = letter;
 
-    if (letter.length === currentText.length) {
-        setTimeout(() => {
-            index = 0;
-            count++;
-        }, 2000);
+    let typeSpeed = 100;
+
+    if (isDeleting) {
+        typeSpeed /= 2;
     }
 
-    setTimeout(type, 100);
+    if (!isDeleting && letter === fullText) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && letter === "") {
+        isDeleting = false;
+        count++;
+        typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
 }
 
 type();
