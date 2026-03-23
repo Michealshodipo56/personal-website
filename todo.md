@@ -5,11 +5,11 @@
 - add favicon ----- done
 - change logo ----- done
 - add social links ----- done
+- change years experience ----- done
+- change other tools and technologies used ----- done
 - add profile image
 - add other images
-- change years experience
 - edit skils range
-- change other tools and technologies used
 - change the featured project contents
 - update certificate and achivement
 - update the lets work together section
