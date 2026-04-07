@@ -83,12 +83,52 @@ function type() {
 type();
 
 
-// Contact form (prevent refresh)
+// Contact form (prevent refresh and send via EmailJS)
 const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    alert("Message sent! (This is a demo form)");
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    
+    // Show loading state
+    submitBtn.innerHTML = 'Sending... <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>';
+    if (window.lucide) lucide.createIcons();
+    
+    submitBtn.disabled = true;
+
+    // Send using EmailJS
+    emailjs.sendForm('service_lgkchrr', 'template_fd3i2f8', this)
+        .then(() => {
+            submitBtn.innerHTML = 'Message Sent! <i data-lucide="check-circle" class="w-4 h-4"></i>';
+            submitBtn.classList.replace('bg-primary', 'bg-green-600');
+            submitBtn.classList.replace('hover:bg-primary/80', 'hover:bg-green-700');
+            if (window.lucide) lucide.createIcons();
+            form.reset();
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.replace('bg-green-600', 'bg-primary');
+                submitBtn.classList.replace('hover:bg-green-700', 'hover:bg-primary/80');
+                if (window.lucide) lucide.createIcons();
+            }, 3000);
+        }, (error) => {
+            console.error("EmailJS Error:", error);
+            submitBtn.innerHTML = 'Failed to Send <i data-lucide="x-circle" class="w-4 h-4"></i>';
+            submitBtn.classList.replace('bg-primary', 'bg-red-600');
+            submitBtn.classList.replace('hover:bg-primary/80', 'hover:bg-red-700');
+            if (window.lucide) lucide.createIcons();
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.replace('bg-red-600', 'bg-primary');
+                submitBtn.classList.replace('hover:bg-red-700', 'hover:bg-primary/80');
+                if (window.lucide) lucide.createIcons();
+            }, 3000);
+        });
 });
 
 
@@ -116,3 +156,71 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+// Project Modal Logic
+const projectCards = document.querySelectorAll('.project-card');
+const projectModal = document.getElementById('project-modal');
+const modalContent = document.getElementById('project-modal-content');
+const modalImage = document.getElementById('modal-image');
+const modalVisitBtn = document.getElementById('modal-visit-btn');
+const closeModalBtn = document.getElementById('close-modal');
+
+if (projectModal) {
+    projectCards.forEach(card => {
+        card.classList.add('cursor-pointer');
+        
+        card.addEventListener('click', (e) => {
+            // Prevent modal if clicking on links directly within the card
+            if (e.target.closest('a')) return;
+
+            const imgElement = card.querySelector('img');
+            if (!imgElement) return;
+            
+            const imgSrc = imgElement.src;
+            
+            // Find the best link to use for the "Visit Project" button
+            const links = card.querySelectorAll('a');
+            let visitLink = '#';
+            if (links.length > 1) {
+                visitLink = links[1].href; // External link is usually second
+            } else if (links.length === 1) {
+                visitLink = links[0].href;
+            }
+
+            modalImage.src = imgSrc;
+            modalVisitBtn.href = visitLink;
+
+            // Show modal
+            projectModal.classList.remove('hidden');
+            projectModal.classList.add('flex');
+            
+            // Allow display block to apply before animating opacity
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    projectModal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                });
+            });
+        });
+    });
+
+    function closeProjectModal() {
+        projectModal.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        
+        setTimeout(() => {
+            projectModal.classList.add('hidden');
+            projectModal.classList.remove('flex');
+            modalImage.src = '';
+            modalVisitBtn.href = '#';
+        }, 300); // Matches the duration-300 in Tailwind class
+    }
+
+    closeModalBtn.addEventListener('click', closeProjectModal);
+
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) {
+            closeProjectModal();
+        }
+    });
+}
